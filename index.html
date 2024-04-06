@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Property Price</title>
+    <style>
+        body{
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+        }
+        .main{
+            margin-top: 10px;
+            border: 1px solid rgb(169, 222, 226);
+            justify-content: center;
+            padding: 30px;
+            width: 90%;
+            background: linear-gradient(to right, #c08ddd, #7ba8e7);  
+        }
+        h1{
+            text-align: center;
+            margin-right: 0px;
+            color: white;
+        }
+        label{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color:white;
+            font-size: large;
+        }
+        input[type="number"],
+        input[type="option"]{
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width:95%;
+        }
+        select {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: 95%;
+            margin-bottom: 10px; 
+            color: rgb(62, 16, 246);
+        }
+        input[type="submit"]{
+            background-color: #0056b3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            text-align: center;
+            border-radius: 40px;
+            cursor: pointer;
+            margin-left: 165px;
+            transition: background-color 0.9s;
+        }
+        h2{
+            text-align: center;
+            margin-right: 0px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>Predict Property Price</h1>
+        <form action="/predict" method="post">
+            <label for="bedrooms">Number of Bedrooms:</label>
+            <input type="number" id="bedrooms" name="bedrooms" required><br><br>
+            
+            <label for="bathrooms">Number of Bathrooms:</label>
+            <input type="number" id="bathrooms" name="bathrooms" required><br><br>
+            
+            <label for="sqft_living">Square Footage of Living Area:</label>
+            <input type="number" id="sqft_living" name="sqft_living" required><br><br>
+            
+            <label for="sqft_lot">Square Footage of Lot:</label>
+            <input type="number" id="sqft_lot" name="sqft_lot" required><br><br>
+            
+            <label for="floors">Number of Floors:</label>
+            <input type="number" id="floors" name="floors" required><br><br>
+            
+            <label for="waterfront">Waterfront:</label>
+            <select id="waterfront" name="waterfront" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select><br><br>
+
+            <label for="view">View:</label><br>
+            <select id="view" name="view" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select><br><br>
+
+            <label for="condition">Condition:</label>
+            <select id="condition" name="condition" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select><br><br>
+
+    
+            <input type="submit" value="Predict">
+    
+            {% if predicted_price %}
+            <h2>Predicted Price: {{ predicted_price }}</h2>
+            {% endif %}
+    </div>
+    </form>
+</body>
+</html>
